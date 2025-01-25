@@ -18,6 +18,7 @@ pwm_l = GPIO.PWM(LPWM_PIN, frequency)
 pwm_r.start(0)
 pwm_l.start(0)
 def set_motor_speed_Left(speed):
+    left = set_motor_speed_Left
     """
     Set motor speed and direction.
     :param speed: Integer from 0 to 100
@@ -30,8 +31,9 @@ def set_motor_speed_Left(speed):
     else:  # Stop
         pwm_r.ChangeDutyCycle(0)
         pwm_l.ChangeDutyCycle(0)
-
+left = set_motor_speed_Left()
 def set_motor_speed_Right(speed):
+    Right = set_motor_speed_Right
     """
     Set motor speed and direction.
     :param speed: Integer from 0 to 100
@@ -44,7 +46,7 @@ def set_motor_speed_Right(speed):
     else:  # Stop
         pwm_r.ChangeDutyCycle(0)
         pwm_l.ChangeDutyCycle(0)
-
+right = set_motor_speed_Right()
 def set_motor_speed_Forward(speed):
     """
     Set motor speed and direction.
@@ -58,7 +60,10 @@ def set_motor_speed_Forward(speed):
     else:  # Stop
         pwm_r.ChangeDutyCycle(0)
         pwm_l.ChangeDutyCycle(0)
+forward = set_motor_speed_Forward()
+        
 def set_motor_speed_Backward(speed):
+    back = set_motor_speed_Backward
     """
     Set motor speed and direction.
     :param speed: Integer from 0 to 100
@@ -71,33 +76,33 @@ def set_motor_speed_Backward(speed):
     else:  # Stop
         pwm_r.ChangeDutyCycle(0)
         pwm_l.ChangeDutyCycle(0)
-
+Back = set_motor_speed_Backward()
 try:
     print("Motor running...")
     
-    for spx in range(0, 101, 30):#Right
-        set_motor_speed_Left(spx)
-        set_motor_speed_Right(-spx)
+    for sp in range(0, 101, 30):#Right
+        set_motor_speed_Left(sp)
+        set_motor_speed_Right(-sp)
 
         time.sleep(1)
-    for spx in range(0, 101, 30):#Left
-        set_motor_speed_Left(-spx)
-        set_motor_speed_Right(spx)
+    for sp in range(0, 101, 30):#Left
+        set_motor_speed_Left(-sp)
+        set_motor_speed_Right(sp)
 
         time.sleep(1)
-    for spx in range(0, 101, 30):#Forward
-        set_motor_speed_Left(spx)
-        set_motor_speed_Right(spx)
+    for sp in range(0, 101, 30):#Forward
+        set_motor_speed_Left(sp)
+        set_motor_speed_Right(sp)
         time.sleep(1)
-    for spx in range(0, 101, 30):#Backward
-        set_motor_speed_Left(-spx)
-        set_motor_speed_Right(-spx)
+    for sp in range(0, 101, 30):#Backward
+        set_motor_speed_Left(-sp)
+        set_motor_speed_Right(-sp)
         time.sleep(1)
 
 finally:
     print("Stopping motor...")
-    set_motor_speed_Left(0)  # Stop motor
-    set_motor_speed_Right(0)  # Stop motor
+    set_motor_speed_Left(0)  
+    set_motor_speed_Right(0)  
     set_motor_speed_Backward(0)
     set_motor_speed_Forward(0)
     pwm_r.stop()
