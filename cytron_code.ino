@@ -124,5 +124,3 @@ void moveanti(int speed) {
   digitalWrite(RD_DIR, LOW);  // Set direction to AntiClockwise
   analogWrite(RD_PWM, speed); // Set speed
 }
-moveforward(150)
-delay()
