@@ -41,12 +41,12 @@ int calculateSpeed(int percentage) {
 }
 
 void stopAll() {
-  analogWrite(LU_PWM, 0);
-  analogWrite(RU_PWM, 0);
-  analogWrite(LD_PWM, 0);
-  analogWrite(RD_PWM, 0);
-  analogWrite(MU_PWM, 0);
-  analogWrite(MD_PWM, 0);
+  analogWrite(LU_PWM, 0);//left up motor speed = 0
+  analogWrite(RU_PWM, 0);//right up motor speed = 0
+  analogWrite(LD_PWM, 0);//left down motor speed = 0
+  analogWrite(RD_PWM, 0);//right down motor speed = 0
+  analogWrite(MU_PWM, 0);//new motor up motor speed = 0
+  analogWrite(MD_PWM, 0);//new motor down motor speed = 0
   delay (1500);
 }
 
