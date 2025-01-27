@@ -1,17 +1,17 @@
-// Motor Driver 1 Pins (Motors 1 and 3)
-#define LU_PWM 2  // Motor 1 PWM
-#define LU_DIR 30 // Motor 1 Direction
-#define LD_PWM 3  // Motor 2 PWM
-#define LD_DIR 32 // Motor 2 Direction
+#define MAX_SPEED 228 
 
-// Motor Driver 2 Pins (Motors 2 and 4)
-#define RU_PWM 4  // Motor 3 PWM
-#define RU_DIR 34 // Motor 3 Direction
-#define RD_PWM 5 // Motor 4 PWM
-#define RD_DIR 36 // Motor 4 Direction
+ #define LU_PWM 2  
+ #define LU_DIR 30 
+ #define LD_PWM 3  
+ #define LD_DIR 32 
+
+#define RU_PWM 4  
+#define RU_DIR 34 
+#define RD_PWM 5 
+#define RD_DIR 36 
 
 void setup() {
-  // Set motor pins as output
+
   pinMode(LU_PWM, OUTPUT);
   pinMode(LU_DIR, OUTPUT);
   pinMode(RU_PWM, OUTPUT);
@@ -22,133 +22,124 @@ void setup() {
   pinMode(RD_DIR, OUTPUT);
 }
 
+int calculateSpeed(int percentage) {
+  int result=0;
+  if(percentage >= 100){
+   result =  MAX_SPEED;}
+   else{
+  result = (percentage * MAX_SPEED) / 100;}
+  return result;
+}
+
 void moveForward(int speed) {
-  // Motor 1 - Forward
-  digitalWrite(LU_DIR, HIGH);  // Set direction to forward
-  analogWrite(LU_PWM, speed); // Set speed
+  int pwmSpeed = calculateSpeed(speed);
+  digitalWrite(LU_DIR, HIGH);  
+  analogWrite(LU_PWM, pwmSpeed); 
 
-  // Motor 2 - Forward
-  digitalWrite(RU_DIR, HIGH);  // Set direction to forward
-  analogWrite(RU_PWM, speed); // Set speed
+  digitalWrite(RU_DIR, HIGH);  
+  analogWrite(RU_PWM, pwmSpeed); 
 
-  // Motor 3 - Forward
-  digitalWrite(LD_DIR, LOW);  // Set direction to forward
-  analogWrite(LD_PWM, speed); // Set speed
+  digitalWrite(LD_DIR, LOW);  
+  analogWrite(LD_PWM, pwmSpeed); 
 
-  // Motor 4 - Forward
-  digitalWrite(RD_DIR, LOW);  // Set direction to forward
-  analogWrite(RD_PWM, speed); // Set speed
+  digitalWrite(RD_DIR, LOW);  
+  analogWrite(RD_PWM, pwmSpeed); 
 }
+
 void moveBackward(int speed) {
-  // Motor 1 - Backward
-  digitalWrite(LU_DIR, LOW);  // Set direction to Backward
-  analogWrite(LU_PWM, speed); // Set speed
+  int pwmSpeed = calculateSpeed(speed);
+  digitalWrite(LU_DIR, LOW);  
+  analogWrite(LU_PWM, pwmSpeed); 
 
-  // Motor 2 - Backward
-  digitalWrite(RU_DIR, LOW);  // Set direction to Backward
-  analogWrite(RU_PWM, speed); // Set speed
+  digitalWrite(RU_DIR, LOW);  
+  analogWrite(RU_PWM, pwmSpeed); 
 
-  // Motor 3 - Backward
-  digitalWrite(LD_DIR, HIGH);  // Set direction to Backward
-  analogWrite(LD_PWM, speed); // Set speed
+  digitalWrite(LD_DIR, HIGH);  
+  analogWrite(LD_PWM, pwmSpeed); 
 
-  // Motor 4 - Backward
-  digitalWrite(RD_DIR, HIGH);  // Set direction to Backward
-  analogWrite(RD_PWM, speed); // Set speed
+  digitalWrite(RD_DIR, HIGH);  
+  analogWrite(RD_PWM, pwmSpeed); 
 }
+
 void moveRight(int speed) {
-  // Motor 1 - Right
-  digitalWrite(LU_DIR, HIGH);  // Set direction to Right
-  analogWrite(LU_PWM, speed); // Set speed
+  int pwmSpeed = calculateSpeed(speed);
+  digitalWrite(LU_DIR, HIGH);  
+  analogWrite(LU_PWM, pwmSpeed); 
 
-  // Motor 2 - Right
-  digitalWrite(RU_DIR, LOW);  // Set direction to Right
-  analogWrite(RU_PWM, speed); // Set speed
+  digitalWrite(RU_DIR, LOW);  
+  analogWrite(RU_PWM, pwmSpeed); 
 
-  // Motor 3 - Right
-  digitalWrite(LD_DIR, HIGH);  // Set direction to Right
-  analogWrite(LD_PWM, speed); // Set speed
+  digitalWrite(LD_DIR, HIGH);  
+  analogWrite(LD_PWM, pwmSpeed); 
 
-  // Motor 4 - Right
-  digitalWrite(RD_DIR, LOW);  // Set direction to Right
-  analogWrite(RD_PWM, speed); // Set speed
+  digitalWrite(RD_DIR, LOW);  
+  analogWrite(RD_PWM, pwmSpeed); 
 }
+
 void moveLeft(int speed) {
-  // Motor 1 - Left
-  digitalWrite(LU_DIR, LOW);  // Set direction to Left
-  analogWrite(LU_PWM, speed); // Set speed
+  int pwmSpeed = calculateSpeed(speed);
+  digitalWrite(LU_DIR, LOW);  
+  analogWrite(LU_PWM, pwmSpeed); 
 
-  // Motor 2 - Left
-  digitalWrite(RU_DIR, HIGH);  // Set direction to Left
-  analogWrite(RU_PWM, speed); // Set speed
+  digitalWrite(RU_DIR, HIGH);  
+  analogWrite(RU_PWM, pwmSpeed); 
 
-  // Motor 3 - Left
-  digitalWrite(LD_DIR, LOW);  // Set direction to Left
-  analogWrite(LD_PWM, speed); // Set speed
+  digitalWrite(LD_DIR, LOW);  
+  analogWrite(LD_PWM, pwmSpeed); 
 
-  // Motor 4 - Left
-  digitalWrite(RD_DIR, HIGH);  // Set direction to Left
-  analogWrite(RD_PWM, speed); // Set speed
+  digitalWrite(RD_DIR, HIGH);  
+  analogWrite(RD_PWM, pwmSpeed); 
 }
+
 void moveClock(int speed) {
-  // Motor 1 - Clockwise
-  digitalWrite(LU_DIR, HIGH);  // Set direction to Clockwise
-  analogWrite(LU_PWM, speed); // Set speed
+  int pwmSpeed = calculateSpeed(speed);
+  digitalWrite(LU_DIR, HIGH);  
+  analogWrite(LU_PWM, pwmSpeed); 
 
-  // Motor 2 - Clockwise
-  digitalWrite(RU_DIR, LOW);  // Set direction to Clockwise
-  analogWrite(RU_PWM, speed); // Set speed
+  digitalWrite(RU_DIR, LOW);  
+  analogWrite(RU_PWM, pwmSpeed); 
 
-  // Motor 3 - Clockwise
-  digitalWrite(LD_DIR, LOW);  // Set direction to Clockwise
-  analogWrite(LD_PWM, speed); // Set speed
+  digitalWrite(LD_DIR, LOW);  
+  analogWrite(LD_PWM, pwmSpeed); 
 
-  // Motor 4 - Clockwise
-  digitalWrite(RD_DIR, HIGH);  // Set direction to Clockwise
-  analogWrite(RD_PWM, speed); // Set speed
+  digitalWrite(RD_DIR, HIGH);  
+  analogWrite(RD_PWM, pwmSpeed); 
 }
+
 void moveAnti(int speed) {
-  // Motor 1 - AntiClockwise
-  digitalWrite(LU_DIR, LOW);  // Set direction to AntiClockwise
-  analogWrite(LU_PWM, speed); // Set speed
+  
+  int pwmSpeed = calculateSpeed(speed);
+  
+  digitalWrite(LU_DIR, LOW);  
+  analogWrite(LU_PWM, pwmSpeed); 
 
-  // Motor 2 - AntiClockwise
-  digitalWrite(RU_DIR, HIGH);  // Set direction to AntiClockwise
-  analogWrite(RU_PWM, speed); // Set speed
+  digitalWrite(RU_DIR, HIGH);  
+  analogWrite(RU_PWM, pwmSpeed); 
 
-  // Motor 3 - AntiClockwise
-  digitalWrite(LD_DIR, HIGH);  // Set direction to AntiClockwise
-  analogWrite(LD_PWM, speed); // Set speed
+  digitalWrite(LD_DIR, HIGH);  
+  analogWrite(LD_PWM, pwmSpeed); 
 
-  // Motor 4 - AntiClockwise
-  digitalWrite(RD_DIR, LOW);  // Set direction to AntiClockwise
-  analogWrite(RD_PWM, speed); // Set speed
+  digitalWrite(RD_DIR, LOW); 
+  analogWrite(RD_PWM, pwmSpeed); 
 }
-void loop() {
-  // Test all movements with speed 150 for 2 seconds each
 
-  // Move forward with speed 150
-  moveForward(150);
+void loop() {
+
+  moveForward(100);
   delay(2000);  
 
-  // Move backward with speed 150
   moveBackward(150);
   delay(2000);  
 
-  // Move right with speed 150
-  moveRight(150);
+  moveRight(50);
   delay(2000); 
 
-  // Move left with speed 150
-  moveLeft(150);
+  moveLeft(35);
   delay(2000);
 
-  // Rotate clockwise with speed 150
-  moveClock(150);
+  moveClock(80);
   delay(2000);
 
-  // Rotate counterclockwise with speed 150
-  moveAnti(150);
+  moveAnti(69);
   delay(2000);
 }
-
