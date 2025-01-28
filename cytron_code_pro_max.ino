@@ -121,10 +121,10 @@ digitalWrite(RU_DIR, HIGH);
 digitalWrite(LD_DIR, HIGH);
 digitalWrite(RD_DIR, LOW);
 }
-analogWrite(LU_DIR, pwmSpeed);
-analogWrite(RU_DIR, pwmSpeed);
-analogWrite(LD_DIR, pwmSpeed);
-analogWrite(RD_DIR, pwmSpeed);
+analogWrite(LU_PWM, pwmSpeed);
+analogWrite(RU_PWM, pwmSpeed);
+analogWrite(LD_PWM, pwmSpeed);
+analogWrite(RD_PWM, pwmSpeed);
 }
 void loop() {
   y_axis(90); //from 0% to 100% 
